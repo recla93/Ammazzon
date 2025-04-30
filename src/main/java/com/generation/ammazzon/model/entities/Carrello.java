@@ -21,4 +21,20 @@ public class Carrello extends BaseEntity
 	{
 		return items.stream().mapToDouble(i->i.getQtn()*i.getProdotto().getPrezzo()).sum();
 	}
+
+	/**
+	 * Restituisce un Item se è già presente il prodotto, null se non è presente
+	 * @return
+	 */
+	public ItemAmmazzon productAlreadyPresent(Prodotto p)
+	{
+		//scorro gli item e restituisco quello con prodotto uguale al parametro
+		for(ItemAmmazzon i : items)
+			if(i.getProdotto().equals(p))
+				return i;
+		//se non esiste da null
+		return null;
+
+//		return items.stream().filter(i->i.getProdotto().equals(p)).findFirst().orElse(null);
+	}
 }

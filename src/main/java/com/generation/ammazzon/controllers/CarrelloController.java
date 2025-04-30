@@ -4,9 +4,7 @@ import com.generation.ammazzon.model.dtos.CarrelloPageDto;
 import com.generation.ammazzon.model.dtos.services.CarrelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/carts")
@@ -24,4 +22,11 @@ public class CarrelloController
         return  carrelloService.getMyCarrello(username);
     }
 
+    @PostMapping("/add")
+    public CarrelloPageDto addProduct(@RequestBody AggiuntaDto dto, Authentication authentication)
+    {
+        return carrelloService.aggiungiProdotto(authentication.getName(),dto.idProdotto());
+    }
+
+    public record AggiuntaDto(Long idProdotto){}
 }
