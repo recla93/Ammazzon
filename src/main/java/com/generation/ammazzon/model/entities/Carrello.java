@@ -13,7 +13,8 @@ public class Carrello extends BaseEntity
 	@OneToOne
 	@JoinColumn(name = "id_utente")
 	private Utente utente;
-	@OneToMany(mappedBy = "carrello",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "carrello")
 	private List<ItemAmmazzon> items = new ArrayList<>();
 
 	public double getTotale()
