@@ -10,6 +10,9 @@ public interface UtenteDao extends JpaRepository<Utente,Long>
 
 	Utente findByUsername(String username);
 
+	//exist invece che dare l'utente con quello username, da solo vero o falso
+	boolean existsByUsername(String username);
+
 //	@Query("SELECT u FROM Utente u WHERE (u.username=:boh OR u.mail=:boh) and u.password=:password ")
 //	Utente trovaUtente(String boh, String password);
 }
